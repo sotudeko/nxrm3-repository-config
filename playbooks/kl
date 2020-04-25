@@ -1,0 +1,4 @@
+#!/bin/bash
+
+curl -X POST "http://localhost:8081/service/rest/beta/blobstores/file" -H "accept: application/json" -H "Content-Type: application/json" -d '{"softQuota": "type": "string", "limit": 0 }, "path": "/opt/nxrm3/sonatype-work/nexus3/blobs/dummyBlob", "name": "dummyBlob"}'
+

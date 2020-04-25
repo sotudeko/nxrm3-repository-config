@@ -1,0 +1,120 @@
+---
+# defaults file for repository-create
+
+nxrm3_api_endpoint: service/rest/beta/repositories/{{ format }}/{{ repo_type }}
+
+# bower, gitlfs, helm, npm, nuget, pypi
+_hosted_repository:
+    - name: "{{ repository_name }}"
+      online: true
+      storage:
+        blobStoreName: "{{ blobstore }}"
+        strictContentTypeValidation: true
+        writePolicy: "ALLOW_ONCE"
+    # cleanup:
+    #   policyNames: "Weekly-Cleanup"
+
+_hosted_repository_maven:
+    - name: "{{ repository_name }}"
+      online: true
+      storage:
+        blobStoreName: "{{ blobstore }}"
+        strictContentTypeValidation: true
+        writePolicy: "ALLOW_ONCE"
+      maven:
+        versionPolicy: "MIXED"
+        layoutPolicy: "STRICT"
+    # cleanup:
+    #   policyNames: "Weekly-Cleanup"
+    
+_hosted_repository_docker:
+    - name: "{{ repository_name }}"
+      online: true
+      storage:
+        blobStoreName: "{{ blobstore }}"
+        strictContentTypeValidation: true
+        writePolicy: "ALLOW_ONCE"
+      docker:
+        v1Enabled: true
+        forceBasicAuth: true
+        httpPort: 7013
+        httpsPort: 7014
+    # cleanup:
+    #   policyNames: "Weekly-Cleanup"
+
+_hosted_repository_yum:
+    - name: "{{ repository_name }}"
+      online: true
+      storage:
+        blobStoreName: "{{ blobstore }}"
+        strictContentTypeValidation: true
+        writePolicy: "ALLOW_ONCE"
+      yum: 
+        repodataDepth: 5
+        deployPolicy: "STRICT"
+    # cleanup:
+    #   policyNames: "Weekly-Cleanup"
+
+_hosted_repository_apt:
+    - name: "{{ repository_name }}"
+      online: true
+      storage:
+        blobStoreName: "{{ blobstore }}"
+        strictContentTypeValidation: true
+        writePolicy: "ALLOW_ONCE"
+    # cleanup:
+    #   policyNames: "Weekly-Cleanup"
+
+_proxy_repository_docker:
+    - name: "{{ repository_name }}"
+      online: true
+      storage: 
+        blobStoreName: "{{ blobstore }}"
+        strictContentTypeValidation: true
+      proxy: 
+        remoteUrl: "https://registry-1.docker.io"
+        contentMaxAge: 1440
+        metadataMaxAge: 1440
+      negativeCache:
+        enabled: false
+        timeToLive: 1440
+      httpClient: 
+        blocked: false
+        autoBlock: false
+        # connection: 
+        #   retries: 0
+        #   userAgentSuffix: "string"
+        #   timeout: 60
+        #   enableCircularRedirects: false
+        #   enableCookies": false
+        # authentication:
+        #   type: "username"
+        #   username: "string"
+        #   ntlmHost: "string"
+        #   ntlmDomain: "string"
+    #   routingRule: "string"
+      docker: 
+        v1Enabled: true
+        forceBasicAuth: true
+        # httpPort: 8082
+        # httpsPort: 8083
+      dockerProxy: 
+        indexType: "HUB"
+        indexUrl: "https://index.docker.io/"
+     
+_group_repository_docker:
+    - name: "{{ repository_name }}"
+      online: true
+      storage:
+        blobStoreName: "{{ blobstore }}"
+        strictContentTypeValidation: true
+      docker:
+        v1Enabled: true
+        forceBasicAuth: true
+        httpPort: 7016
+        httpsPort: 7017
+      group:
+        memberNames:
+          - docker-registry
+          - docker-proxy
+      

@@ -1,0 +1,15 @@
+---
+# tasks file for blobstore-create
+
+# - include_vars: files/blobstore-config.json
+
+- include: run.yml
+  with_items:
+    - "{{ _blobstore }}"
+
+
+# - name: Run NXRM3 api
+#   include_role:
+#     name: nxrm3-api
+#   vars:
+#     api_body: "{{ _blobstore }}"

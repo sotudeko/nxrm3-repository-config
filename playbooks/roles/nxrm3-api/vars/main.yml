@@ -1,0 +1,15 @@
+---
+# vars file for nxrm3-api
+
+nxrm3_instances:
+    - name: london
+      host: http://localhost
+      port: 8081
+      user: admin
+      passwd: admin123
+  
+    # - name: rotterdam
+    #   host: http://localhost
+    #   port: 8011
+    #   user: admin
+    #   passwd: admin123

@@ -1,0 +1,11 @@
+---
+# defaults file for nxrm3-api
+
+nxrm3_blobstore_api_endpoint: service/rest/beta/blobstores/file
+
+blobstore_path: "/opt/nxrm3/sonatype-work/nexus3/blobs"
+
+_blobstore:
+  - name: "{{ blobstore_name }}"
+    path: "{{ blobstore_path }}/{{ blobstore_name }}"
+    #softQuota: "{{ nxrm3_blob_softQuota }}"

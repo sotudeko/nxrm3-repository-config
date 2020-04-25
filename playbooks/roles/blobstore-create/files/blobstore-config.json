@@ -1,0 +1,9 @@
+{
+  "nxrm3_blob_name": "maven",
+  "nxrm3_blob_path": "maven",
+  "nxrm3_blob_softQuota": {
+    "type": "string",
+    "limit": 0
+  }
+}
+

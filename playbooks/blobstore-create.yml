@@ -1,0 +1,20 @@
+---
+- hosts: all
+  roles:
+    - { role: blobstore-create, blobstore_name: "cocapods" }
+    - { role: blobstore-create, blobstore_name: "conan" }
+    - { role: blobstore-create, blobstore_name: "conda" }
+    - { role: blobstore-create, blobstore_name: "docker-proxy" }
+    - { role: blobstore-create, blobstore_name: "docker-rgy" }
+    - { role: blobstore-create, blobstore_name: "go" }
+    - { role: blobstore-create, blobstore_name: "helm" }
+    - { role: blobstore-create, blobstore_name: "maven" }
+    - { role: blobstore-create, blobstore_name: "npm" }
+    - { role: blobstore-create, blobstore_name: "nuget" }
+    - { role: blobstore-create, blobstore_name: "pypi" }
+    - { role: blobstore-create, blobstore_name: "raw" }
+    - { role: blobstore-create, blobstore_name: "rubygems" }
+    - { role: blobstore-create, blobstore_name: "yum" }
+
+      
+

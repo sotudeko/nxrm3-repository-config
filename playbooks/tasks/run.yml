@@ -1,0 +1,21 @@
+---
+- name: Run API 
+  uri:
+    url: "{{ nxrm3_item.host }}:{{ nxrm3_item.port }}/{{ nxrm3_api_endpoint }}"
+    user: "{{ nxrm3_item.user }}"
+    password: "{{ nxrm3_item.passwd }}"
+    headers:
+      Content-Type: "application/json"
+    method: POST
+    status_code: 200,201,204
+    force_basic_auth: yes
+    body: "{{ item | to_json }}"
+  loop: "{{ nxrm3_instances }}"
+  loop_control:
+     loop_var: nxrm3_item
+  register: op
+
+#- debug:
+    #var: op
+
+

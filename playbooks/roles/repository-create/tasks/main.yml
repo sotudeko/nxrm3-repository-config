@@ -1,0 +1,7 @@
+---
+# tasks file for repository-create
+
+- include: run.yml
+  with_items:
+    - "{{ repository_configuration }}"
+    
