@@ -1,8 +1,7 @@
 ---
 - hosts: all
   roles:
-    - { role: repository-create, repository_name: "staging-development", format: "maven", blobstore: "maven", repo_type: "hosted" }
-    - { role: repository-create, repository_name: "staging-production", format: "maven", blobstore: "maven", repo_type: "hosted" }
+    - { role: repository-create, repository_name: "npm-registry", format: "npm", blobstore: "npm", repo_type: "hosted", repository_configuration: "{{ _hosted_repository }}" }
     - { role: repository-create, repository_name: "docker-registry", format: "docker", blobstore: "docker", repo_type: "hosted", repository_configuration: "{{ _hosted_repository_docker }}" }
     - { role: repository-create, repository_name: "docker-proxy", format: "docker", blobstore: "docker", repo_type: "proxy", repository_configuration: "{{ _proxy_repository_docker }}" }
     - { role: repository-create, repository_name: "docker-group", format: "docker", blobstore: "docker", repo_type: "group", repository_configuration: "{{ _group_repository_docker }}" }

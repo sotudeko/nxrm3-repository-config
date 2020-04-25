@@ -11,8 +11,9 @@ _hosted_repository:
         blobStoreName: "{{ blobstore }}"
         strictContentTypeValidation: true
         writePolicy: "ALLOW_ONCE"
-    # cleanup:
-    #   policyNames: "Weekly-Cleanup"
+      cleanup:
+        policyNames:
+          - Weekly-Cleanup
 
 _hosted_repository_maven:
     - name: "{{ repository_name }}"
@@ -24,8 +25,6 @@ _hosted_repository_maven:
       maven:
         versionPolicy: "MIXED"
         layoutPolicy: "STRICT"
-    # cleanup:
-    #   policyNames: "Weekly-Cleanup"
     
 _hosted_repository_docker:
     - name: "{{ repository_name }}"
@@ -39,8 +38,6 @@ _hosted_repository_docker:
         forceBasicAuth: true
         httpPort: 7013
         httpsPort: 7014
-    # cleanup:
-    #   policyNames: "Weekly-Cleanup"
 
 _hosted_repository_yum:
     - name: "{{ repository_name }}"
@@ -52,9 +49,7 @@ _hosted_repository_yum:
       yum: 
         repodataDepth: 5
         deployPolicy: "STRICT"
-    # cleanup:
-    #   policyNames: "Weekly-Cleanup"
-
+    
 _hosted_repository_apt:
     - name: "{{ repository_name }}"
       online: true
@@ -62,8 +57,6 @@ _hosted_repository_apt:
         blobStoreName: "{{ blobstore }}"
         strictContentTypeValidation: true
         writePolicy: "ALLOW_ONCE"
-    # cleanup:
-    #   policyNames: "Weekly-Cleanup"
 
 _proxy_repository_docker:
     - name: "{{ repository_name }}"
