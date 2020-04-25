@@ -1,0 +1,17 @@
+---
+# defaults file for nexus-iq-config
+
+nxrm3_api_endpoint: service/rest/beta/iq
+
+nxrm3_api_method: PUT
+
+_nexus_iq_config:
+    - url: "{{ nexus_iq_url }}"
+      username: "{{ nexus_iq_user }}"
+      password: "{{ nexus_iq_passwd }}"
+      enabled: true
+      showLink: true
+      authenticationType: "USER"
+      useTrustStoreForUrl: true
+       
+

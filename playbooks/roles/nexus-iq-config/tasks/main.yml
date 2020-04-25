@@ -1,0 +1,7 @@
+---
+# tasks file for nexus-iq-config
+
+- include: run.yml
+  with_items:
+    - "{{ _nexus_iq_config }}"
+    

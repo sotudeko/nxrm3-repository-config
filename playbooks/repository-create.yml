@@ -1,9 +1,149 @@
 ---
 - hosts: all
   roles:
-    - { role: repository-create, repository_name: "npm-registry", format: "npm", blobstore: "npm", repo_type: "hosted", repository_configuration: "{{ _hosted_repository }}" }
-    - { role: repository-create, repository_name: "docker-registry", format: "docker", blobstore: "docker", repo_type: "hosted", repository_configuration: "{{ _hosted_repository_docker }}" }
-    - { role: repository-create, repository_name: "docker-proxy", format: "docker", blobstore: "docker", repo_type: "proxy", repository_configuration: "{{ _proxy_repository_docker }}" }
-    - { role: repository-create, repository_name: "docker-group", format: "docker", blobstore: "docker", repo_type: "group", repository_configuration: "{{ _group_repository_docker }}" }
+    - role: repository-create 
+      vars:
+        repository_name: "npm-registry" 
+        format: "npm" 
+        blobstore: "npm" 
+        repo_type: "hosted" 
+        repository_configuration: "{{ _hosted_repository }}"
 
-      
+    - role: repository-create 
+      vars:
+        repository_name: "npm-proxy" 
+        format: "npm" 
+        blobstore: "npm" 
+        repo_type: "proxy" 
+        proxy_remote_url: "https://registry.npmjs.org" 
+        repository_configuration: "{{ _proxy_repository }}" 
+
+    - role: repository-create 
+      vars:
+        repository_name: "npm-group" 
+        format: "npm" 
+        blobstore: "npm" 
+        repo_type: "group" 
+        repository_configuration: "{{ _group_repository }}" 
+        group_members: ["npm-registry" "npm-proxy"] 
+    
+    - role: repository-create 
+      vars:
+        repository_name: "conan-proxy" 
+        format: "conan" 
+        blobstore: "conan" 
+        repo_type: "proxy" 
+        proxy_remote_url: "https://conan.bintray.com" 
+        repository_configuration: "{{ _proxy_repository }}"
+
+    - role: repository-create 
+      vars:
+        repository_name: "helm-registry" 
+        format: "helm" 
+        blobstore: "helm" 
+        repo_type: "hosted" 
+        repository_configuration: "{{ _hosted_repository }}"
+
+    - role: repository-create 
+      vars:
+        repository_name: "helm-proxy" 
+        format: "helm" 
+        blobstore: "helm" 
+        repo_type: "proxy" 
+        proxy_remote_url: "https://kubernetes-charts.storage.googleapis.com/" 
+        repository_configuration: "{{ _proxy_repository }}"
+
+    - role: repository-create 
+      vars:
+        repository_name: "go-proxy" 
+        format: "go" 
+        blobstore: "go" 
+        repo_type: "proxy" 
+        proxy_remote_url: "https://gonexus.dev" 
+        repository_configuration: "{{ _proxy_repository }}"
+
+    - role: repository-create 
+      vars:
+        repository_name: "go-group" 
+        format: "go" 
+        blobstore: "go" 
+        repo_type: "group" 
+        repository_configuration: "{{ _group_repository }}" 
+        group_members: ["go-proxy"]
+    
+    - role: repository-create 
+      vars:
+        repository_name: "pypi-registry" 
+        format: "pypi" 
+        blobstore: "pypi" 
+        repo_type: "hosted" 
+        repository_configuration: "{{ _hosted_repository }}"
+
+    - role: repository-create 
+      vars:
+        repository_name: "pypi-proxy" 
+        format: "pypi" 
+        blobstore: "pypi" 
+        repo_type: "proxy" 
+        proxy_remote_url: "https://pypi.org/" 
+        repository_configuration: "{{ _proxy_repository }}"
+
+    - role: repository-create 
+      vars:
+        repository_name: "pypi-group" 
+        format: "pypi" 
+        blobstore: "pypi" 
+        repo_type: "group" 
+        repository_configuration: "{{ _group_repository }}" 
+        group_members: ["pypi-registry" "pypi-proxy"]
+    
+    - role: repository-create 
+      vars:
+        repository_name: "docker-registry" 
+        format: "docker" 
+        blobstore: "docker" 
+        repo_type: "hosted" 
+        repository_configuration: "{{ _hosted_repository_docker }}"
+
+    - role: repository-create 
+      vars:
+        repository_name: "docker-proxy" 
+        format: "docker" 
+        blobstore: "docker" 
+        repo_type: "proxy" 
+        repository_configuration: "{{ _proxy_repository_docker }}"
+
+    - role: repository-create 
+      vars:
+        repository_name: "docker-group" 
+        format: "docker" 
+        blobstore: "docker" 
+        repo_type: "group" 
+        repository_configuration: "{{ _group_repository_docker }}"
+    
+    - role: repository-create 
+      vars:
+        repository_name: "jenkins-plugins" 
+        format: "raw" 
+        blobstore: "raw" 
+        repo_type: "hosted" 
+        repository_configuration: "{{ _hosted_repository }}"
+
+    - role: repository-create 
+      vars:
+        repository_name: "yum-registry" 
+        format: "yum" 
+        blobstore: "yum" 
+        repo_type: "hosted" r
+        repository_configuration: "{{ _hosted_repository }}"
+
+    - role: repository-create
+      vars:
+        repository_name: "yum-registry"
+        format: "yum"
+        blobstore: "yum"
+        repo_type: "hosted"
+        repository_configuration: "{{ _hosted_repository_yum }}"
+
+
+ 

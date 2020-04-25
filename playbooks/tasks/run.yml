@@ -6,7 +6,7 @@
     password: "{{ nxrm3_item.passwd }}"
     headers:
       Content-Type: "application/json"
-    method: POST
+    method: "{{ nxrm3_api_method }}"
     status_code: 200,201,204
     force_basic_auth: yes
     body: "{{ item | to_json }}"
@@ -14,6 +14,8 @@
   loop_control:
      loop_var: nxrm3_item
   register: op
+  ignore_errors: yes
+
 
 #- debug:
     #var: op

@@ -3,7 +3,8 @@
 
 nxrm3_api_endpoint: service/rest/beta/repositories/{{ format }}/{{ repo_type }}
 
-# bower, gitlfs, helm, npm, nuget, pypi
+nxrm3_api_method: POST
+
 _hosted_repository:
     - name: "{{ repository_name }}"
       online: true
@@ -58,6 +59,24 @@ _hosted_repository_apt:
         strictContentTypeValidation: true
         writePolicy: "ALLOW_ONCE"
 
+
+_proxy_repository:
+    - name: "{{ repository_name }}"
+      online: true
+      storage: 
+        blobStoreName: "{{ blobstore }}"
+        strictContentTypeValidation: true
+      proxy: 
+        remoteUrl: "{{ proxy_remote_url }}"
+        contentMaxAge: 1440
+        metadataMaxAge: 1440
+      negativeCache:
+        enabled: false
+        timeToLive: 1440
+      httpClient: 
+        blocked: false
+        autoBlock: false
+
 _proxy_repository_docker:
     - name: "{{ repository_name }}"
       online: true
@@ -95,6 +114,16 @@ _proxy_repository_docker:
         indexType: "HUB"
         indexUrl: "https://index.docker.io/"
      
+
+_group_repository:
+    - name: "{{ repository_name }}"
+      online: true
+      storage:
+        blobStoreName: "{{ blobstore }}"
+        strictContentTypeValidation: true
+      group:
+        memberNames: "{{ group_members }}"
+          
 _group_repository_docker:
     - name: "{{ repository_name }}"
       online: true
@@ -104,10 +133,15 @@ _group_repository_docker:
       docker:
         v1Enabled: true
         forceBasicAuth: true
-        httpPort: 7016
-        httpsPort: 7017
+        httpPort: 7018
+        httpsPort: 7018
       group:
         memberNames:
           - docker-registry
           - docker-proxy
-      
+              
+
+
+
+
+        

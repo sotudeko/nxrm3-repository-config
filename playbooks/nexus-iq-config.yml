@@ -1,0 +1,10 @@
+---
+- hosts: all
+  roles:
+    - role: nexus-iq-config
+      vars:
+        nexus_iq_url: "http://localhost:8070"
+        nexus_iq_user: "admin"
+        nexus_iq_passwd: "admin123"
+
+        

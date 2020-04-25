@@ -3,6 +3,8 @@
 
 nxrm3_api_endpoint: service/rest/beta/blobstores/file
 
+nxrm3_api_method: POST
+
 blobstore_path: "/opt/nxrm3/sonatype-work/nexus3/blobs"
 
 _blobstore:
